@@ -1,0 +1,60 @@
+Apriori
+=======
+[preprocess] ARFF loaded: 5 transactions, 6 attributes
+
+Generated sets of large itemsets:
+
+Size of set of large itemsets L(1): 6
+  "Beer=y" (3)
+  "Bread=y" (4)
+  "Coke=n" (3)
+  "Diaper=y" (4)
+  "Eggs=n" (4)
+  "Milk=y" (4)
+
+Size of set of large itemsets L(2): 8
+  "Beer=y,Diaper=y" (3)
+  "Bread=y,Coke=n" (3)
+  "Bread=y,Diaper=y" (3)
+  "Bread=y,Eggs=n" (3)
+  "Bread=y,Milk=y" (3)
+  "Diaper=y,Eggs=n" (3)
+  "Diaper=y,Milk=y" (3)
+  "Eggs=n,Milk=y" (4)
+
+Size of set of large itemsets L(3): 2
+  "Bread=y,Eggs=n,Milk=y" (3)
+  "Diaper=y,Eggs=n,Milk=y" (3)
+
+Generated rules (28):
+
+Rule 1: Eggs=n 4 ==> Milk=y 4 <conf: 1.0000> <supp: 0.8000>
+Rule 2: Milk=y 4 ==> Eggs=n 4 <conf: 1.0000> <supp: 0.8000>
+Rule 3: Coke=n 3 ==> Bread=y 3 <conf: 1.0000> <supp: 0.6000>
+Rule 4: Beer=y 3 ==> Diaper=y 3 <conf: 1.0000> <supp: 0.6000>
+Rule 5: Bread=y Eggs=n 3 ==> Milk=y 3 <conf: 1.0000> <supp: 0.6000>
+Rule 6: Bread=y Milk=y 3 ==> Eggs=n 3 <conf: 1.0000> <supp: 0.6000>
+Rule 7: Diaper=y Eggs=n 3 ==> Milk=y 3 <conf: 1.0000> <supp: 0.6000>
+Rule 8: Diaper=y Milk=y 3 ==> Eggs=n 3 <conf: 1.0000> <supp: 0.6000>
+Rule 9: Diaper=y 4 ==> Eggs=n 3 <conf: 0.7500> <supp: 0.6000>
+Rule 10: Eggs=n 4 ==> Diaper=y 3 <conf: 0.7500> <supp: 0.6000>
+Rule 11: Bread=y 4 ==> Milk=y 3 <conf: 0.7500> <supp: 0.6000>
+Rule 12: Milk=y 4 ==> Bread=y 3 <conf: 0.7500> <supp: 0.6000>
+Rule 13: Bread=y 4 ==> Diaper=y 3 <conf: 0.7500> <supp: 0.6000>
+Rule 14: Diaper=y 4 ==> Bread=y 3 <conf: 0.7500> <supp: 0.6000>
+Rule 15: Diaper=y 4 ==> Milk=y 3 <conf: 0.7500> <supp: 0.6000>
+Rule 16: Milk=y 4 ==> Diaper=y 3 <conf: 0.7500> <supp: 0.6000>
+Rule 17: Bread=y 4 ==> Coke=n 3 <conf: 0.7500> <supp: 0.6000>
+Rule 18: Diaper=y 4 ==> Beer=y 3 <conf: 0.7500> <supp: 0.6000>
+Rule 19: Bread=y 4 ==> Eggs=n 3 <conf: 0.7500> <supp: 0.6000>
+Rule 20: Eggs=n 4 ==> Bread=y 3 <conf: 0.7500> <supp: 0.6000>
+Rule 21: Bread=y 4 ==> Eggs=n Milk=y 3 <conf: 0.7500> <supp: 0.6000>
+Rule 22: Eggs=n 4 ==> Bread=y Milk=y 3 <conf: 0.7500> <supp: 0.6000>
+Rule 23: Milk=y 4 ==> Bread=y Eggs=n 3 <conf: 0.7500> <supp: 0.6000>
+Rule 24: Eggs=n Milk=y 4 ==> Bread=y 3 <conf: 0.7500> <supp: 0.6000>
+Rule 25: Diaper=y 4 ==> Eggs=n Milk=y 3 <conf: 0.7500> <supp: 0.6000>
+Rule 26: Eggs=n 4 ==> Diaper=y Milk=y 3 <conf: 0.7500> <supp: 0.6000>
+Rule 27: Milk=y 4 ==> Diaper=y Eggs=n 3 <conf: 0.7500> <supp: 0.6000>
+Rule 28: Eggs=n Milk=y 4 ==> Diaper=y 3 <conf: 0.7500> <supp: 0.6000>
+
+Runtime: 0.000s
