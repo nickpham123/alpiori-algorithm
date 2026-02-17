@@ -1,6 +1,5 @@
-#!/usr/bin/env python3
-# Driver script for the Apriori algorithm
 import os
+import sys
 import time
 
 import matplotlib
@@ -11,11 +10,6 @@ from anes_preprocess import load_arff
 from apriori import apriori, generate_rules
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-
-# Settings
-DATA_FILE = os.path.join(SCRIPT_DIR, "anes_apriori.arff")
-MIN_SUPPORT = 0.85
-MIN_CONFIDENCE = 0.7
 
 
 def run_apriori(data_path, min_support, min_confidence):
@@ -30,7 +24,6 @@ def run_apriori(data_path, min_support, min_confidence):
 
     rules = generate_rules(freq, min_confidence)
 
-    # Print frequent itemsets grouped by level
     print(f"\nGenerated sets of large itemsets:")
     for k in sorted(levels.keys()):
         itemsets = levels[k]
@@ -42,7 +35,6 @@ def run_apriori(data_path, min_support, min_confidence):
             items_str.append(f'  "{label}" ({count})')
         print("\n".join(items_str))
 
-    # Print in weka style
     rules.sort(key=lambda r: (-r["confidence"], -r["support"]))
 
     print(f"\nGenerated rules ({len(rules)}):\n")
@@ -80,7 +72,6 @@ def run_plot(data_path, min_confidence=0.7):
         print(f"  sup={ms:.2f}  time={elapsed:7.3f}s  "
               f"freq_sets={len(freq):5d}  rules={len(rules):5d}")
 
-    # Runtime vs min support
     fig, ax = plt.subplots(figsize=(8, 5))
     ax.plot(supports, runtimes, "o-", color="#2563eb", linewidth=2, markersize=7)
     ax.set_xlabel("Minimum Support", fontsize=13)
@@ -93,7 +84,6 @@ def run_plot(data_path, min_confidence=0.7):
     plt.close(fig)
     print(f"\n  Saved: {path1}")
 
-    # Number of rules vs min support
     fig, ax = plt.subplots(figsize=(8, 5))
     ax.plot(supports, rule_counts, "s-", color="#dc2626", linewidth=2, markersize=7)
     ax.set_xlabel("Minimum Support", fontsize=13)
@@ -110,5 +100,14 @@ def run_plot(data_path, min_confidence=0.7):
 
 
 if __name__ == "__main__":
-    run_apriori(DATA_FILE, MIN_SUPPORT, MIN_CONFIDENCE)
-    run_plot(DATA_FILE, MIN_CONFIDENCE)
+    if len(sys.argv) < 3:
+        print("Usage: python3 main.py <min_support> <min_confidence> [data_file]")
+        print("Example: python3 main.py 0.85 0.7 anes_apriori.arff")
+        sys.exit(1)
+
+    min_sup = float(sys.argv[1])
+    min_conf = float(sys.argv[2])
+    data_file = sys.argv[3] if len(sys.argv) > 3 else os.path.join(SCRIPT_DIR, "anes_apriori.arff")
+
+    run_apriori(data_file, min_sup, min_conf)
+    # run_plot(data_file, min_conf)

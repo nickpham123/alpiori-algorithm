@@ -1,68 +1,29 @@
-# Apriori Algorithm - Association Rule Mining
-
-## Description
-Implementation of the Apriori algorithm for mining frequent itemsets and generating association rules from the ANES (American National Election Studies) Pilot dataset.
+# Apriori Algorithm
 
 ## Requirements
-- Python 3.10+
-- pandas
-- numpy
-- matplotlib
-
-Install dependencies:
-```
-pip install pandas numpy matplotlib
-```
+- Python 3
+- matplotlib (for plotting only)
 
 ## Files
-- `apriori.py` - Core Apriori algorithm (candidate generation, support counting, rule generation)
-- `anes_preprocess.py` - Preprocesses the ANES dataset into transactional format and exports Weka ARFF
-- `main.py` - Driver script with CLI for running the algorithm, generating plots, and exporting ARFF
-- `ANES_Pilot_ETS_cleaned.csv` - Cleaned ANES Pilot dataset
+- `apriori.py` - Apriori algorithm implementation
+- `anes_preprocess.py` - ARFF file loader
+- `main.py` - Driver script
+- `anes_apriori.arff` - ANES dataset in ARFF format
+- `test.arff` - Test dataset (5 transactions, 6 items)
 
 ## Usage
 
-### Run Apriori on the ANES dataset
+Run the algorithm with minimum support and confidence as inputs:
 ```
-python3 main.py --min_support 0.3 --min_confidence 0.7
-```
-
-### Custom support and confidence thresholds
-```
-python3 main.py --min_support 0.2 --min_confidence 0.8
+python3 main.py <min_support> <min_confidence> [data_file]
 ```
 
-### Generate runtime and rule count plots
+### Examples
 ```
-python3 main.py --plot
-```
-This produces two PNG files:
-- `runtime_vs_support.png` - Runtime vs. minimum support
-- `rules_vs_support.png` - Number of rules vs. minimum support
-
-### Export Weka ARFF file
-```
-python3 main.py --arff
-```
-This produces `anes_apriori.arff` which can be opened in Weka for comparison.
-
-### Specify a different dataset
-```
-python3 main.py --data path/to/dataset.csv --min_support 0.3 --min_confidence 0.7
+python3 main.py 0.85 0.7 anes_apriori.arff
+python3 main.py 0.6 0.7 test.arff
+python3 main.py 0.6 0.7 vote.arff
 ```
 
-## Output Format
-The program outputs:
-1. **Frequent itemsets** grouped by size (L(1), L(2), L(3), etc.) with item counts
-2. **Association rules** with support and confidence values in the format:
-   ```
-   Rule 1: antecedent count ==> consequent count <conf: 0.98> <supp: 0.30>
-   ```
-
-## Algorithm Overview
-1. Scan transactions to find frequent 1-itemsets (L1)
-2. Generate candidate k-itemsets from frequent (k-1)-itemsets using self-join and pruning
-3. Count support for each candidate across all transactions
-4. Keep candidates meeting minimum support threshold
-5. Repeat until no new frequent itemsets are found
-6. Generate association rules from all frequent itemsets that meet minimum confidence
+## Output
+The program outputs frequent itemsets grouped by level (L1, L2, ...) and association rules sorted by confidence and support.
