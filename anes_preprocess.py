@@ -4,29 +4,27 @@ import numpy as np
 import os
 
 # Columns to use and how to bin them
-# Format: column_name: (bin_type, label_map or None)
 COLUMNS = {
-    # Emotions (1-5 scale) → Low/Mid/High
+    # Emotions 
     "hopeful": "likert5", "afraid": "likert5", "outraged": "likert5",
     "angry": "likert5", "happy": "likert5", "worried": "likert5",
     "proud": "likert5", "irritated": "likert5", "nervous": "likert5",
     # Voting
-    "follow": "binary_low",       # 1-2 → Closely, 3-4 → NotClosely
+    "follow": "binary_low",      
     "reg1": {1: "Yes", 2: "No"},
     "turnout16a": {1: "Voted", 2: "DidNotVote", 3: "DidNotVote"},
     "vote16": {1: "Clinton", 2: "Trump", 3: "Other", 4: "Other", 5: "Other", 6: "DidNotVote"},
-    # Party ID (1-7 scale)
+    # Party ID 
     "pid7": "pid",
     # Demographics
     "sex": {1: "Male", 2: "Female"},
     "educ": "educ",
     "marital1": "marital",
-    # Policy (1-5 scale)
+    # Policy 
     "econnow": "likert5", "immignum": "likert5", "hlthcare1": "likert5",
     "abort1": "likert5", "experts": "likert5", "science": "likert5",
-    # 7-point scales
     "lcself": "likert7", "diversity7": "likert7",
-    # Racial resentment (1-5)
+    # Racial resentment 
     "rr1": "likert5", "rr2": "likert5", "rr3": "likert5", "rr4": "likert5",
 }
 

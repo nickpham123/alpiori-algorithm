@@ -13,8 +13,8 @@ from apriori import apriori, generate_rules
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Settings
-DATA_FILE = os.path.join(SCRIPT_DIR, "test.arff")
-MIN_SUPPORT = 0.6
+DATA_FILE = os.path.join(SCRIPT_DIR, "anes_apriori.arff")
+MIN_SUPPORT = 0.85
 MIN_CONFIDENCE = 0.7
 
 
@@ -111,4 +111,4 @@ def run_plot(data_path, min_confidence=0.7):
 
 if __name__ == "__main__":
     run_apriori(DATA_FILE, MIN_SUPPORT, MIN_CONFIDENCE)
-    # run_plot(DATA_FILE, MIN_CONFIDENCE)
+    run_plot(DATA_FILE, MIN_CONFIDENCE)
